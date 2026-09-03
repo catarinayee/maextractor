@@ -65,6 +65,7 @@ def filepather():
     #q = path / dirinput
 
     pathlist = []
+    samplenames = []
 
     for child in path.iterdir():
         if child.name.endswith(".raw"):
@@ -72,11 +73,13 @@ def filepather():
 
     for p in pathlist:
         rightpath = Path(p).name
+        samplenames.append(rightpath.removesuffix('.raw'))
         extractor(rightpath)
 
         # Saves the MAlist to a csv file that you specify
     with open(outputwrite, 'a', newline='') as csvfile:
         dawriter = csv.writer(csvfile)
+        dawriter.writerow(samplenames)
         dawriter.writerow(MAlist)
 
 filepather()
