@@ -94,6 +94,4 @@ def filepather():
         dawriter.writerow(samplenames)
         dawriter.writerow(MAlist)
 
-
-
 filepather()
